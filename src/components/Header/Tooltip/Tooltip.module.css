@@ -1,0 +1,71 @@
+.Tooltip {
+    width: 250px;
+    height: 170px;
+    border: 1px solid grey;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 100;
+    background-color: white;
+}
+
+.Tooltip::before{
+    content: "";
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    border-color: grey transparent transparent grey;
+    border-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    background-color: white;
+    left: 30%;
+    top: -12px;
+    box-shadow: 0px -3px 6px -4px rgba(0, 0, 0, 0.5);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* .Tooltip::before{
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-top-style: solid;
+    border-color: transparent transparent black transparent;
+} */
+
+.Input {
+    width: 200px;
+    font-size: 14px;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.Button {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 10px;
+    align-self: flex-end;
+    margin-right: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    width: 30%;
+    padding: 5px 2px;
+    background-color: lightgray;
+    outline: none;
+}
+
+@media(max-width: 769px){
+    .Tooltip{
+        display: none;
+    }
+}

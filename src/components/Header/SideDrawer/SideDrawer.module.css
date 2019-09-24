@@ -47,6 +47,18 @@
     color: green;
 }
 
+.ImgContainer {
+    margin-right: 50px;
+    position: relative;
+}
+
+.TooltipSmall{
+    position: absolute;
+    transform: translateX(-21%);
+    top: -160px;
+    height: 150px;
+}
+
 @media(min-width: 769px){
     .SideDrawer, .SideDrawerOpen {
         display: none;

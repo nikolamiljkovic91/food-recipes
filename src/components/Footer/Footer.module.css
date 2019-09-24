@@ -1,0 +1,85 @@
+.Footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: lightgray;
+    height: 150px;
+}
+
+.SocialNetworks{
+    display: flex; 
+    width: 30%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.Social{
+    height: 30px;
+    margin-right: 30px;
+}
+
+
+.LogoWrapper{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+.Logo{
+    width: 80%;
+    height: auto;
+    margin-left: 10px;
+}
+
+.Copyright{
+    width: 40%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.Text{
+    font-size: 12px;
+    color: grey;
+}
+
+@media(max-width: 769px){
+    .LogoWrapper{
+        width: 25%;
+    }
+    .Social{
+        height: 24px;
+        margin-right: 20px;
+    }
+    .SocialNetworks{
+        width: 25%;
+    }
+    .Copyright{
+        width: 50%;
+    }
+    .Text{
+        font-size: 8px;
+    }
+}
+
+@media(max-width: 426px){
+        .Social{
+            height: 18px;
+        }
+        .LogoWrapper{
+            width: 50%;
+        }
+        .Logo{
+            width: 60%;
+        }
+        .SocialNetworks{
+            width: 50%;
+            order: 1;
+        }
+        .Copyright{
+            width: 100%;
+            order: 2
+        }
+        .Footer{
+            flex-wrap: wrap;
+            height: 75px;
+        }
+}
