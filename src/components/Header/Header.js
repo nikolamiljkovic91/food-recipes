@@ -6,7 +6,8 @@ import Backdrop from './Backdrop/Backdrop';
 class Header extends React.Component {
 
     state = {
-        sideDrawerOpen: false
+        sideDrawerOpen: false,
+        tooltipOpen: false
     }
 
     hamburgerButtonHandler = () => {
@@ -20,12 +21,13 @@ class Header extends React.Component {
     }
 
 
+
     render() {
 
         return (
             <div style={{height: '100%'}}>
-                <Toolbar drawerClickHandler={this.hamburgerButtonHandler} />
-                <SideDrawer show={this.state.sideDrawerOpen} click={this.backdropClickHandler}/>
+                <Toolbar drawerClickHandler={this.hamburgerButtonHandler} tooltip={this.state.tooltipOpen}/>
+                <SideDrawer show={this.state.sideDrawerOpen}/>
                 {this.state.sideDrawerOpen && <Backdrop backdropHandler={this.backdropClickHandler}/>}
                 <div style={{marginTop: '70px'}}>
                     
