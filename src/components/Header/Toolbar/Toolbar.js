@@ -6,41 +6,29 @@ import classes from './Toolbar.module.css'
 import HamburgerButton from '../SideDrawer/HamburgerButton';
 import Tooltip from '../Tooltip/Tooltip';
 
-class Toolbar extends React.Component {
-
-    state = {
-        tooltipOpen: false
-    }
-
-        tooltipOpenHandler = () => {
-        this.setState(preState => ({
-            tooltipOpen: !preState.tooltipOpen
-        }))
-        console.log(this.state.tooltipOpen)
-    }
-
-    render () {
+const Toolbar = (props) => {
 
         let showTooltip = null;
-        if(this.state.tooltipOpen){
-            showTooltip = <Tooltip />
+        if(props.tooltip){
+            showTooltip = <Tooltip input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
         }
     
         return (
             <div className={classes.Nav}>
                 <div>
-                    <HamburgerButton clicked={this.props.drawerClickHandler}/>
+                    <HamburgerButton clicked={props.drawerClickHandler}/>
                 </div>
                 <input className={classes.Input} type='text'/>
                 {/* <div className={classes.Divide}></div> */}
                 <ul className={classes.Ul}>
                     <li className={classes.Li}>
                             <div className={classes.ImgContainer}>
-                                <img className={classes.Img} src={Avatar} alt='avatar' onClick={this.tooltipOpenHandler}/>
+                                <img className={classes.Img} src={Avatar} alt='avatar' onClick={props.tooltipClick}/>
                                 <div className={classes.TooltipCont}>
                                     {showTooltip}
                                 </div>
                             </div>
+                        {props.authUser.isAuth && <Link className={classes.Link} to="/">My Meals</Link>}
                         <Link className={classes.Link} to="/">About Us</Link>
                         <Link className={classes.Link} to="/">Contact</Link>
                     </li>
@@ -48,6 +36,5 @@ class Toolbar extends React.Component {
             </div>
         )
     }
-}
 
 export default Toolbar;

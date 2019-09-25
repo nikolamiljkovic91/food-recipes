@@ -2,18 +2,20 @@ import * as actionTypes from '../actions/actionTypes'
 
 const INITIAL_STATE = {
     users: [{
-        name: '',
-        password: ''
+        name: 'test@test.com',
+        password: 'test123'
     }],
-    error: null,
-    loading: false
+    isAuth: false,
+    error: null
 }
 
-export const authReducer = (state = INITIAL_STATE, action) => {
+ const authReducer = (state = INITIAL_STATE, action) => {
     switch(action.actionTypes){
-            case(actionTypes.AUTH_SUCCESS):
-        return {...state, users: { name: action.payload, password: action.payload }}
+            case(actionTypes.AUTH_USER):
+        return  {...state, isAuth: true}
         default:
             return state
     }
 }
+
+export default authReducer;

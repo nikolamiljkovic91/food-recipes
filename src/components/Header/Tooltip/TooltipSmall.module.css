@@ -1,8 +1,9 @@
 .TooltipSm {
     width: 190px;
-    height: 140px;
+    height: 120px;
     border: 1px solid grey;
     display: flex;
+    top: 20px;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
@@ -21,7 +22,7 @@
     border-width: 1px;
     background-color: white;
     left: 29%;
-    top: 130px;
+    top: 110px;
     transform: translateX(-50%) rotate(45deg);
     border-right-style: solid;
     border-bottom-style: solid;
@@ -40,7 +41,7 @@
 .ButtonSm {
     border: 1px solid white;
     border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 4px;
     align-self: flex-end;
     margin-right: 20px;
     font-size: 12px;
@@ -50,4 +51,25 @@
     padding: 5px 2px;
     background-color: lightgray;
     outline: none;
+}
+
+.LogoutButtonSm {
+    border: 1px solid white;
+    border-radius: 10px;
+    align-self: flex-end;
+    margin: auto auto;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    width: 80%;
+    padding: 5px 2px;
+    background-color: lightgray;
+    outline: none;
+}
+
+.ErrorSm {
+    color: black;
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: -15px;
 }
