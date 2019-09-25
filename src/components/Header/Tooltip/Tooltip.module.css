@@ -64,6 +64,27 @@
     outline: none;
 }
 
+.LogoutButton {
+    border: 1px solid white;
+    border-radius: 10px;
+    align-self: flex-end;
+    margin: auto auto;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    width: 80%;
+    padding: 5px 2px;
+    background-color: lightgray;
+    outline: none;
+}
+
+.Error {
+    color: black;
+    font-size: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
 @media(max-width: 769px){
     .Tooltip{
         display: none;
