@@ -1,0 +1,42 @@
+.Item {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.ItemImg {
+    width: 100%;
+    min-height: 100%;
+}
+
+.SingleItem {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Loading {
+    text-align: center;
+}
+
+@media(max-width: 769px) {
+    .Item {
+        width: 70%;
+    }
+}
+
+@media(max-width: 426px) {
+    .Item {
+        width: 60%;
+    }
+    .NameText{
+        font-size: 14px;
+        margin-top: 3px;
+    }
+    .SingleItem{
+        margin-bottom: 10px;
+    }
+}
