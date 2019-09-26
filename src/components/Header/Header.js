@@ -42,7 +42,6 @@ class Header extends React.Component {
                 [email]:password
             }
         })
-        console.log(this.state)
     }
 
     onAuthHandler = (event) => {
