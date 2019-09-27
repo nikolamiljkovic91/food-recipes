@@ -1,0 +1,83 @@
+.Results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 35px;
+    width: 30%;
+}
+
+.ItemImg {
+    width: 60%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.Img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.TextOne {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.Text{
+    margin-top: 0px;
+}
+.Span{
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+.Loading {
+    text-align: center;
+}
+
+.TextDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 60%;
+}
+
+.ListWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media(max-width: 769px) {
+    .Text{
+        font-size: 14px; 
+        margin-top: 0px;
+    }
+    .TextOne{
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width: 426px) {
+    .Results {
+        width: 70%;
+        margin-bottom: 20px;
+    }
+    .ItemImg {
+        width: 100%;
+    }
+    .TextOne {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .Text {
+        margin: 5px 0px;
+        font-size: 12px;
+    }
+    .TextDiv{
+        width: 100%;
+    }
+}

@@ -21,7 +21,7 @@ const SideDrawer = (props) => {
                                         {showTooltip}
                                     </div>
                                 </div>
-                    {props.authUser.isAuth && <Link className={classes.DrawerLink} to="/">My Meals</Link>}            
+                    {props.authUser.isAuth && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
                     <Link className={classes.DrawerLink}to='/'>About Us</Link>
                     <Link className={classes.DrawerLink}to='/'>Contact</Link>
                 </ul>

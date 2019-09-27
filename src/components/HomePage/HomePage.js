@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import Header from '../Header/Header'
 import AboutUs from './AboutUs/AboutUs';
 import PageHeader from './PageHeader/PageHeader';
 import List from './Categories/List';
 import Contact from './Contact/Contact';
 import * as actions from '../../store/actions/index';
+import Footer from '../Footer/Footer';
 
 
 
@@ -63,6 +65,7 @@ class HomePage extends React.Component{
     
         return (
             <div>
+                <Header />
                 <PageHeader 
                 toggle={this.onClickHandler}/>
                 <List 
@@ -73,6 +76,7 @@ class HomePage extends React.Component{
                 input={this.onInputChange}
                 formState={this.state.formData}
                 submit={this.onSubmitHandler}/>
+                <Footer />
             </div>
         )
     }

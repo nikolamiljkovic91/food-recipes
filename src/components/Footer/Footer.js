@@ -5,6 +5,8 @@ import Logo from '../../assets/Images/LOGO.png'
 import Facebook from '../../assets/icons/FB.png'
 import Instagram from '../../assets/icons/INSTA.png'
 
+
+
 const Footer = () => {
     return (
         <div className={classes.Footer}>
