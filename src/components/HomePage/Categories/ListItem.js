@@ -10,7 +10,7 @@ const ListItem = (props) => {
         return(
         <div className={classes.SingleItem} key={item.idCategory}>
             <div className={classes.Item}>
-                <Link to='/'><img className={classes.ItemImg} src={item.strCategoryThumb} alt='meal'/></Link>
+                <Link to='/category'><img className={classes.ItemImg} src={item.strCategoryThumb} alt='meal'/></Link>
             </div>
             <div className={classes.Name}>
                 <p className={classes.NameText}>{item.strCategory}</p>

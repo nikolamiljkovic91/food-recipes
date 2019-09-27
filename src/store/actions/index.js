@@ -1,3 +1,5 @@
 export {
-    fetchCategories
+    fetchCategories,
+    fetchMeals,
+    fetchRandom,
 }from './recipes';

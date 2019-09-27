@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import Toolbar from './Toolbar/Toolbar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import Backdrop from './Backdrop/Backdrop';
+import * as actions from '../../store/actions/index';
 
 class Header extends React.Component {
 
@@ -10,11 +13,14 @@ class Header extends React.Component {
             email: '',
             password: ''
         },
+        searchText: '',
         sideDrawerOpen: false,
         tooltipOpen: false,
         isAuth: false,
         error: false
     }
+
+
 
     hamburgerButtonHandler = () => {
         this.setState((prevState) => {
@@ -55,21 +61,35 @@ class Header extends React.Component {
                 return this.setState({isAuth: false, error: true})
             }
         }       
-        return this.setState({isAuth: true, tooltipOpen: false})
+        return this.setState({isAuth: true, tooltipOpen: false});
     }
-
+    
     logoutHandler = () => {
         this.setState({isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''}})
     }
-
-
-
-
+    
+    onSearchHandler = (event) => {  
+        this.setState({searchText: event.target.value})
+    }
+    
+    onEnterHandler = (event) => {
+        if(event.key === 'Enter' && event.target.value !== ''){
+            this.props.onFetchMeals(this.state.searchText)
+            this.props.history.push('/search')
+        }
+    } 
+    
+    
     render() {
-
+        
+        
+        console.log(this.props.match.url)
+        
         return (
             <div style={{height: '100%'}}>
                 <Toolbar
+                enterHandler={this.onEnterHandler}
+                onSearchHandler={this.onSearchHandler}
                 drawerClickHandler={this.hamburgerButtonHandler}
                 tooltip={this.state.tooltipOpen}
                 authUser={this.state}
@@ -93,4 +113,17 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        data: state.meals
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchMeals: (text) => dispatch(actions.fetchMeals(text))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
