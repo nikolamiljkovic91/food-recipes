@@ -1,0 +1,94 @@
+.SideDrawer{
+    height: 100%;
+    background: white;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.SideDrawerOpen{
+    height: 100%;
+    background: white;
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 200;
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+}
+
+.DrawerList {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+.DrawerLink {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.DrawerLinkOne {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin: 20px 0;
+    margin-top: 35px;
+}
+
+.DrawerLinkHome {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.DrawerLinkHome:hover,
+.DrawerLinkHome:active {
+    color: green;
+}
+
+.DrawerLink:hover,
+.DrawerLink:active {
+    color: green;
+}
+
+.DrawerLinkOne:hover,
+.DrawerLinkOne:active {
+    color: green;
+}
+
+.LinkContainer {
+    margin: 20px;
+}
+
+.ImgContainer {
+    margin-right: 50px;
+    position: relative;
+}
+
+.TooltipSmall{
+    position: absolute;
+    transform: translateX(-21%);
+    top: -160px;
+    height: 150px;
+}
+
+@media(min-width: 769px){
+    .SideDrawer, .SideDrawerOpen {
+        display: none;
+    }
+}

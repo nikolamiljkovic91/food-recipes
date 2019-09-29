@@ -1,0 +1,92 @@
+.Nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 56px;
+    background: lightgray;
+}
+.Btn{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: black;
+}
+
+.Input {
+    border: 1px solid black;
+    border-radius: 3px;
+    height: 20px;
+    margin-left: 35px;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.Ul {
+    list-style: none;
+    display: flex;
+    margin-right: 60px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.Divide {
+    flex: 1;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    padding-right: 30px;
+}
+
+.Img {
+    padding: 5px;
+}
+
+.Li{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.ImgContainer {
+    margin-right: 50px;
+    position: relative;
+}
+
+.TooltipCont{
+    position: absolute;
+    transform: translateX(-22%);
+    top: -133px;
+    height: 150px;
+}
+
+.Link:hover,
+.Link:active {
+    color: green;
+}
+
+@media(max-width: 768px){
+    .Link {
+        display: none;
+    }
+    .Ul{
+        display: none;
+    }
+    .ImgContainer {
+        display: none;
+    }
+    .Nav{
+        justify-content: space-between;
+    }
+    .Input{
+        margin-right: 20px;
+        font-size: 14px;
+    }
+}

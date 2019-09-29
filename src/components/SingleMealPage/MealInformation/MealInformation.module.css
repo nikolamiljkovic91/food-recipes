@@ -1,0 +1,177 @@
+.SingleItem {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MealContent{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 40px;
+    width: 50%;
+}
+
+.HeadImg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.TextHed {
+    font-size: 22px;
+}
+
+.HeadTwo {
+    font-size: 16px;
+}
+
+.Info {
+    display: flex;
+}
+
+.UlList{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-right: 50px;
+}
+.UlListMes{
+    margin-left: 20px;
+}
+
+.ItemImg {
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.Img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.ContentTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 40px;
+    width: 50%;
+}
+
+
+.Hash {
+    display: flex;
+    align-self: center;
+}
+
+.Par{
+    margin-bottom: 20px;
+}
+
+.Span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.ParH {
+    margin-right: 5px;
+    font-weight: bold;
+}
+.SpanH {
+    margin-right: 5px;
+    font-weight: bold;
+}
+.Measure{
+    margin-left: 15px;
+}
+
+
+@media(max-width: 1025px){
+    .TextHed {
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+    .ContentTwo {
+        margin-top: 7px;
+        margin-left: 30px;
+    }
+    .Par{
+        font-size: 14px;
+    }
+    .Measure{
+        font-size: 12px;
+    }
+    .Ingredients{
+        font-size: 12px;
+    }
+}
+
+@media(max-width: 769px){
+    .MealContent{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .ContentTwo{
+        width: 89%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .TextHed{
+        font-size: 16px;
+    }
+    .Par{
+        font-size: 12px;
+    }
+    .SingleItem{
+        flex-direction: column;
+        align-items: center;
+    }
+    .ItemImg{
+        width: 50%;
+    }
+    .HeadImg{
+        width: 100%;
+        align-items: center;
+    }
+    .Info{
+        width: 80%;
+        justify-content: space-around;
+        align-self: center;
+        font-size: 10px;
+    }
+    .MealContent{
+        margin-left: 0px;
+    }
+    .Measure{
+        text-align: left;
+    }
+    .Ingredients{
+        text-align: left;
+    }
+}
+
+@media(max-width: 426px){
+    .Par{
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .HeadTwo {
+        font-size: 12px;
+    }
+    .TextHed{
+        margin-bottom: 10px;
+    }
+    .ParH{
+        font-size: 10px;
+    }
+    .Measure{
+        font-size: 10px;
+    }
+    .Ingredients{
+        font-size: 10px;
+    }
+}

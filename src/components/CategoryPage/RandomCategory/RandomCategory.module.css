@@ -1,0 +1,125 @@
+.ItemImg {
+    width: 30%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.Img {
+    width: 100%;
+    min-height: 100%;
+}
+.Wrap {
+    display: flex;
+    margin-left: 40px;
+    padding-top: 50px;
+    margin-top: 70px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.Headline {
+    margin-bottom: 50px;
+}
+
+.TextOne {
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.Span{
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+.Search {
+    display: flex;
+    justify-content: flex-end;  
+    align-items: flex-start;
+    justify-self: flex-end;
+    margin-right: 80px;
+    margin-top: 6%;
+}
+.SearchInput{
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+}
+.SearchSection{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.Div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.MainHead{
+    font-size: 55px;
+    margin-bottom: 50px
+}
+
+@media(max-width: 769px) {
+    .Text{
+        font-size: 14px; 
+    }
+    .ItemImg{
+        width: 50%;
+    }
+    .Search{
+        margin-right: 60px;
+    }   
+    .MainHead{
+        font-size: 35px;
+        margin-bottom: 40px
+    }
+}
+
+@media(max-width: 426px) {
+    .RandomMeal {
+        margin-left: 0px;
+        align-items: center;
+    }
+    .ItemImg {
+        width: 70%;
+    }
+    .Div{
+        align-items: center;
+        margin-left: 0px;
+    }
+    .Content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .TextOne {
+        margin-bottom: 15px;
+    }
+    .Text {
+        margin: 5px 0px;
+        font-size: 12px;
+    }
+    .SearchSection{
+        flex-direction: column; 
+    }
+    .Search {
+        justify-content: center;
+        margin: 0px;
+        margin-top: 30px;
+    }
+    .SearchInput{
+        font-size: 12px;
+        padding: 5px;
+    }
+    .Wrap{
+        margin-left: 0px
+    }
+    .MainHead{
+        font-size: 30px;
+        margin-bottom: 30px
+    }
+}
