@@ -2,6 +2,35 @@ import React from 'react';
 import classes from './MealInformation.module.css';
 
 const MealInfo = (props) => {
+    console.log(props.info.meal)
+
+    let array = props.info.meal[0] || [];
+
+    let ingredients = [];
+
+    for(let key in array){
+        if(key.includes('strIngredient')){
+            ingredients.push(array[key]) 
+        }
+    };
+    console.log(ingredients)
+
+    let measure = [];
+
+    for(let index in array){
+        if(index.includes('strMeasure')){
+            measure.push(array[index])
+        }
+    }
+
+    let ingList = ingredients.map(ing => {
+        return  <p key={Math.random() * 500}>{ing}</p>
+    })
+
+    let measureList = measure.map(mes => {
+        return <p key={Math.random() * 500}>{mes}</p>
+    })
+
 
     let single = props.info.meal.map(item => {
         return (
@@ -14,22 +43,17 @@ const MealInfo = (props) => {
                 <div className={classes.Info}>
                     <div className={classes.Ingredients}>
                         <h5 className={classes.HeadTwo}>Ingredients</h5>
-                        <ul className={classes.UlList}>
-                            <li className={classes.Li}><p>{item.strIngredient}</p></li>
-                        </ul>
+                        {ingList}
                     </div>
                     <div className={classes.Measure}>
                         <h5 className={classes.HeadTwo}>Measure</h5>
-                        <ul className={classes.UlList}>
-                            <li className={classes.Li}><p>{item.strMeasure}</p></li>
-                        </ul>
+                        {measureList}
                     </div>
                 </div>
             </div>
             <div className={classes.ContentTwo}>
                 <div className={classes.Hash}>
-                    <p className={classes.ParH}><span className={classes.SpanH}>#</span>{item.strTags}</p>
-                    <p className={classes.ParH}><span className={classes.SpanH}>#</span>{item.strTags}</p>
+                    <p className={classes.ParH}><span className={classes.SpanH}>#</span>{item.strTags.split(',').join(' #')}</p>
                 </div>
                 <div className={classes.Description}>
                     <p className={classes.Par}><span className={classes.Span}>Category:</span> {item.strCategory}</p>
