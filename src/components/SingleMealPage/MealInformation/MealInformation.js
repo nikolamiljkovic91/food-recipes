@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './MealInformation.module.css';
 
 const MealInfo = (props) => {
-    console.log(props.info.meal)
+    console.log(props.info.loading)
 
     let array = props.info.meal[0] || [];
 
@@ -53,7 +53,7 @@ const MealInfo = (props) => {
             </div>
             <div className={classes.ContentTwo}>
                 <div className={classes.Hash}>
-                    <p className={classes.ParH}><span className={classes.SpanH}>#</span>{item.strTags.split(',').join(' #')}</p>
+        <p className={classes.ParH}>{item.strTags && <span className={classes.SpanH}>#</span>}{item.strTags && item.strTags.split(',').join(' #')}</p>
                 </div>
                 <div className={classes.Description}>
                     <p className={classes.Par}><span className={classes.Span}>Category:</span> {item.strCategory}</p>
@@ -66,7 +66,14 @@ const MealInfo = (props) => {
         )
     })
 
-    return single;
+    if(props.info.loading){
+        return <p style={{textAlign: 'center'}}>Loading...</p>
+    }else if(props.info.error){
+        return <p style={{textAlign: 'center'}}>Error!</p>
+    }else{
+        return single;
+    }
+
 }
 
 export default MealInfo;

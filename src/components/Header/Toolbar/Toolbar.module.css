@@ -8,6 +8,13 @@
     height: 56px;
     background: lightgray;
 }
+.Btn{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: black;
+}
 
 .Input {
     border: 1px solid black;

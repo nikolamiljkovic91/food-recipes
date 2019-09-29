@@ -1,22 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './CategoryMeals.module.css'
-import BEEF from '../../../assets/Images/BEEF.png'
  
-const CategoryMeals = () => {
+const CategoryMeals = (props) => {
+    let array = props.list || [];
+
+    let filterArr = array.filter(meal => {
+        return meal.strMeal.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1
+    })
+
+    let render = filterArr.map(item => {
+        return (
+        <div className={classes.Div} key={item.idMeal}>
+        <div className={classes.SimilarItem}>
+            <div className={classes.ItemImg}>
+                <Link className={classes.Link} to={`/single-meal/${item.idMeal}`}><img className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
+            </div>
+                <p className={classes.TextOne}>{item.strMeal}</p>
+        </div>
+        </div>
+        )
+    })
+
+    
 
     return (
         <div className={classes.Wrap}>
-        <div className={classes.Results}>
-            <div className={classes.ItemImg}>
-                <Link className={classes.Link} to='/'><img className={classes.Img} src={BEEF} alt='img'/></Link>
-            </div>
-            <div className={classes.TextDiv}>
-                <p className={classes.TextOne}>text</p>
-                <p className={classes.Text}>Category: <span className={classes.Span}>text</span></p>
-                <p className={classes.Text}>Country: <span className={classes.Span}>text</span></p>
-            </div>
-        </div>
+            {render}
         </div>
     )
 }

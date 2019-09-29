@@ -1,27 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import classes from './RandomCategory.module.css'
-import BEEF from '../../../assets/Images/BEEF.png'
  
-const RandomCategory = () => {
+const RandomCategory = (props) => {
+    console.log(props.check.loading)
+    let array = props.random || [];
 
-    return (
-        <div className={classes.SearchSection}>
-    <div className={classes.RandomMeal}>
-        <div className={classes.Content}>
-            <h1 className={classes.Headline}>Category</h1>
-            <p className={classes.Text}>Our recommendation</p>
-            <div className={classes.ItemImg}>
-                <Link to='/'><img className={classes.Img} src={BEEF} alt='img'/></Link>
+
+    let newArr =[];
+    let newPos;
+    let temp;
+
+    for(let i = array.length -1; i > 0; i--){
+        newPos = Math.floor(Math.random() * (i-1));
+        temp = array[i];
+        array[i] = array[newPos];
+        array[newPos] = temp;
+        newArr.push(temp)
+    }
+
+    let render = newArr.map(item => {
+        return (
+                <div className={classes.Div} key={item.idMeal}>
+                    <h1 className={classes.MainHead}>{props.head}</h1>
+                <div className={classes.ItemImg}>
+                    <Link className={classes.Link} to={`/single-meal/${item.idMeal}`}><img className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
+                </div>
+                    <p className={classes.TextOne}>{item.strMeal}</p>
+                </div>
+        )
+    })
+
+    if(props.check.loading){
+        return <p style={{textAlign: 'center'}}>Loading...</p>
+    }else{
+        return(
+        <div>
+            {render.slice(0,1)}
+            <div className={classes.Search}>
+                <input className={classes.SearchInput} onChange={props.changeInput} type='text' value={props.filterR} placeholder='Search meals' />
             </div>
-            <p className={classes.TextOne}>NASLOV</p>
         </div>
-    </div>
-    <div className={classes.Search}>
-        <input className={classes.SearchInput} type='text' name='search' placeholder='Search meals' />
-    </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default RandomCategory;
+export default withRouter(RandomCategory);

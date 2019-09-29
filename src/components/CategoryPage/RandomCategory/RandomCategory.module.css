@@ -1,5 +1,5 @@
 .ItemImg {
-    width: 40%;
+    width: 30%;
     height: auto;
     overflow: hidden;
     border: 1px solid black;
@@ -10,13 +10,13 @@
     width: 100%;
     min-height: 100%;
 }
-
-.RandomMeal {
+.Wrap {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
     margin-left: 40px;
+    padding-top: 50px;
+    margin-top: 70px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .Headline {
@@ -50,6 +50,17 @@
 .SearchSection{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+.Div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.MainHead{
+    font-size: 55px;
+    margin-bottom: 50px
 }
 
 @media(max-width: 769px) {
@@ -58,6 +69,13 @@
     }
     .ItemImg{
         width: 50%;
+    }
+    .Search{
+        margin-right: 60px;
+    }   
+    .MainHead{
+        font-size: 35px;
+        margin-bottom: 40px
     }
 }
 
@@ -68,6 +86,10 @@
     }
     .ItemImg {
         width: 70%;
+    }
+    .Div{
+        align-items: center;
+        margin-left: 0px;
     }
     .Content {
         display: flex;
@@ -92,5 +114,12 @@
     .SearchInput{
         font-size: 12px;
         padding: 5px;
+    }
+    .Wrap{
+        margin-left: 0px
+    }
+    .MainHead{
+        font-size: 30px;
+        margin-bottom: 30px
     }
 }
