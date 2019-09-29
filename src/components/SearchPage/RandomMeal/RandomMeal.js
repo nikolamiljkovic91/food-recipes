@@ -4,7 +4,7 @@ import classes from './RandomMeal.module.css';
 
 const RandomMeal = (props) => {
     let meal = props.random.randomMeal
-    console.log(props.random)
+    console.log(meal)
 
     let renderMeal = meal.map(item => {
         return (
@@ -13,7 +13,7 @@ const RandomMeal = (props) => {
                 <h1 className={classes.Headline}>Search results</h1>
                 <p className={classes.Text}>Our recommendation</p>
                 <div className={classes.ItemImg}>
-                    <Link to={`single-meal/${item.idMeal}`}><img className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
+                    <Link to={`single-meal/${item.idMeal}`}><img onClick={props.click} className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
                 </div>
                 <p className={classes.TextOne}>{item.strMeal}</p>
                 <p className={classes.Text}>Category: <span className={classes.Span}>{item.strCategory}</span></p>

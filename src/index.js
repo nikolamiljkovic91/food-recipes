@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
+localStorage.getItem('auth')
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 

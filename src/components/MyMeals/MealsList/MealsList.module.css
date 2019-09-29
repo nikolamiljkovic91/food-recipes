@@ -6,6 +6,15 @@
     margin-bottom: 35px;
     width: 30%;
 }
+.Wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.H{
+    margin-bottom: 30px;
+    text-align: center;
+}
 
 .ItemImg {
     width: 60%;
@@ -80,4 +89,4 @@
     .TextDiv{
         width: 100%;
     }
-}
+}   

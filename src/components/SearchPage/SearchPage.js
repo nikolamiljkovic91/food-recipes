@@ -9,29 +9,32 @@ import * as actions from '../../store/actions/index';
 
 class SearchPage extends React.Component {
 
+    
+    
     state={
         dropdownInput: ''
     }
-
+    
     componentDidMount = () => {
         this.props.onFetchCategories()
         this.props.onFetchRandom()
-    }
-
-    filterHandler = (event) => {
+        console.log(this.props.match)
+        }
+        
+        filterHandler = (event) => {
         return this.setState({ dropdownInput: event.target.value })
     }
+                        
+            
+        render() {
+                console.log(this.props.fetchRandom.randomMeal)
     
-    
-    
-    render() {
-        
         return (
             <div>
                 <Header />
-                <RandomMeal random={this.props.fetchRandom}/>
+                <RandomMeal click={this.onClickHandler} random={this.props.fetchRandom}/>
                 <Category state={this.props.category} click={this.filterHandler}/>
-                <SearchResults input={this.state.dropdownInput} searchResults={this.props.data} data={this.props.category.categories}/>
+                <SearchResults click={this.onClickHandler} input={this.state.dropdownInput} searchResults={this.props.data} data={this.props.category.categories}/>
                 <Footer />
             </div>
         ) 
@@ -42,14 +45,16 @@ const mapStateToProps = state => {
     return{
         data: state.meals,
         category: state.recipes,
-        fetchRandom: state.random
+        fetchRandom: state.random,
+        singleMeal: state.meal        
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onFetchCategories: () => dispatch(actions.fetchCategories()),
-        onFetchRandom: () => dispatch(actions.fetchRandom())
+        onFetchRandom: () => dispatch(actions.fetchRandom()),
+        // onFetchSimilar: (category) => dispatch(actions.fetchSimilar(category))
     }
 }
 

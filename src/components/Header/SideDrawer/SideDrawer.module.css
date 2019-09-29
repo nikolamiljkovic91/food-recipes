@@ -42,9 +42,37 @@
     margin: 20px 0;
 }
 
+.DrawerLinkOne {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin: 20px 0;
+    margin-top: 35px;
+}
+
+.DrawerLinkHome {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.DrawerLinkHome:hover,
+.DrawerLinkHome:active {
+    color: green;
+}
+
 .DrawerLink:hover,
 .DrawerLink:active {
     color: green;
+}
+
+.DrawerLinkOne:hover,
+.DrawerLinkOne:active {
+    color: green;
+}
+
+.LinkContainer {
+    margin: 20px;
 }
 
 .ImgContainer {

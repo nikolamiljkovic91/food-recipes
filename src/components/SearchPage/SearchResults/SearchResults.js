@@ -4,14 +4,12 @@ import classes from './SearchResults.module.css';
 
 const SearchResults = (props) => {
 
-    console.log(props.data[0])
 
     let array = props.searchResults.meals || [];
 
     let filterArr = array.filter(meal => {
         return meal.strCategory.toLowerCase().indexOf(props.input.toLowerCase()) !== -1
     })
-        console.log(filterArr)
     
     
     const results = filterArr || [];
@@ -20,7 +18,7 @@ const SearchResults = (props) => {
     return (
             <div className={classes.Results} key={item.idMeal}>
                 <div className={classes.ItemImg}>
-                    <Link className={classes.Link} to={`/single-meal/${item.idMeal}`}><img className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
+                    <Link className={classes.Link} to={`/single-meal/${item.idMeal}`}><img onClick={props.click} className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
                 </div>
                 <div className={classes.TextDiv}>
                     <p className={classes.TextOne}>{item.strMeal}</p>

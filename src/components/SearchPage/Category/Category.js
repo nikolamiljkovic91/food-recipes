@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Category.module.css'
 
 const Category = (props) => {
-    console.log(props.click.filterArr)
 
     let drop = props.state.categories.map(item => {
         return <option className={classes.Option} value={item.strCategory} key={item.idCategory}>{item.strCategory}</option>

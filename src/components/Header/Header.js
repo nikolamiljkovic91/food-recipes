@@ -61,11 +61,13 @@ class Header extends React.Component {
                 return this.setState({isAuth: false, error: true})
             }
         }       
+        this.props.onCheckAuth()
         return this.setState({isAuth: true, tooltipOpen: false});
     }
     
     logoutHandler = () => {
         this.setState({isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''}})
+        this.props.onCheckLogout();
     }
     
     onSearchHandler = (event) => {  
@@ -80,10 +82,11 @@ class Header extends React.Component {
     } 
     
     
+    
+    
     render() {
+           
         
-        
-        console.log(this.props.match.url)
         
         return (
             <div style={{height: '100%'}}>
@@ -105,7 +108,7 @@ class Header extends React.Component {
                 logoutButton={this.logoutHandler}
                 authUser={this.state}/>
                 {this.state.sideDrawerOpen && <Backdrop backdropHandler={this.backdropClickHandler}/>}
-                <div style={{marginTop: '70px'}}>
+                <div style={{marginTop: '100px'}}>
                     
                 </div>
             </div>
@@ -114,15 +117,17 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
-        data: state.meals
+        data: state.meals,
+        authenticated: state.authRoute
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchMeals: (text) => dispatch(actions.fetchMeals(text))
+        onFetchMeals: (text) => dispatch(actions.fetchMeals(text)),
+        onCheckAuth: () => dispatch(actions.checkAuth()),
+        onCheckLogout: () => dispatch(actions.checkLogout())
     }
 }
 

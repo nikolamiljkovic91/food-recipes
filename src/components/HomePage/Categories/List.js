@@ -13,7 +13,7 @@ const List = (props) => {
         listRender = (
         <div className={classes.List}>
             <div className={classes.ListItem}>
-                <ListItem data={props.categoryState}/>
+                <ListItem data={props.categoryState} />
             </div>
         </div>
         )

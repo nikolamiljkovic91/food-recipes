@@ -30,7 +30,6 @@ export const fetchCategories = () => {
         .then(response => {
             let data = response.data.categories;
             dispatch(fetchCategoriesSuccess(data))
-            console.log(data)
         })
         .catch(error => {
             dispatch(fetchCategoriesFail(error))
@@ -66,7 +65,6 @@ export const fetchMeals = (meal) => {
         .then(response => {
             let mealData = response.data.meals
             dispatch(fetchMealsSuccess(mealData))
-            console.log(mealData)
         })
         .catch(error => {
             dispatch(fetchMealsFail(error))
@@ -107,3 +105,92 @@ export const fetchRandom = () => {
         })
     }
 }
+
+export const fetchMealStart = () => {
+    return{
+        type: actionTypes.FETCH_MEAL_START
+    }
+}
+
+export const fetchMealSuccess = (meal) => {
+    return{
+        type: actionTypes.FETCH_MEAL_SUCCESS,
+        meal: meal
+    }
+}
+
+export const fetchMealFail = (error) => {
+    return {
+        type: actionTypes.FETCH_MEAL_FAIL,
+        error: error
+    }
+}
+
+export const fetchMealById = (id) => {
+    return dispatch => {
+        dispatch(fetchMealStart())
+        axios.get(`${URL}lookup.php?i=${id}`)
+        .then(response => {
+            dispatch(fetchMealSuccess(response.data.meals))
+        })
+        .catch(error => {
+            dispatch(fetchMealFail(error))
+        })
+    }
+}
+
+export const fetchSimilarStart = () => {
+    return{
+        type: actionTypes.FETCH_SIMILAR_START
+    }
+}
+
+export const fetchSimilarSuccess = (similar) => {
+    return{
+        type: actionTypes.FETCH_SIMILAR_SUCCESS,
+        similar: similar
+    }
+}
+
+export const fetchSimilarFail = (error) => {
+    return {
+        type: actionTypes.FETCH_SIMILAR_FAIL,
+        error: error
+    }
+}
+
+export const fetchSimilar = (category) => {
+    return dispatch => {
+        dispatch(fetchSimilarStart())
+        axios.get(`${URL}filter.php?c=${category}`)
+        .then(response => {
+            let arr = response.data.meals;
+            let newPos;
+            let temp;
+
+            for(let i = arr.length -1; i > 0; i--){
+                newPos = Math.floor(Math.random() * (i-1));
+                temp = arr[i];
+                arr[i] = arr[newPos];
+                arr[newPos] = temp;
+            }
+            dispatch(fetchSimilarSuccess(arr))
+        })
+        .catch(error => {
+            dispatch(fetchSimilarFail(error))
+        })
+    }
+}       
+
+export const checkAuth = () => {
+    return {
+        type: actionTypes.CHECK_AUTH,
+    }
+}
+
+export const checkLogout = () => {
+    return {
+        type: actionTypes.CHECK_LOGOUT
+    }
+}
+
