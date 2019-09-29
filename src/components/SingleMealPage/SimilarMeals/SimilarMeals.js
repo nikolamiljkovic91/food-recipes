@@ -21,7 +21,7 @@ const Similar = (props) => {
     })
 
     if(props.similar.loading){
-        return <p>Loading...</p>
+        return <p style={{textAlign: 'center'}}>Loading...</p>
     }else{
         return (
             <div className={classes.Wrap}>

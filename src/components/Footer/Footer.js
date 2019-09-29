@@ -17,10 +17,10 @@ const Footer = () => {
                 <p className={classes.Text}>Copyright - Golux Technologies 2019 - Nikola Miljkovic</p>
             </div>
             <div className={classes.SocialNetworks}>
-                <Link className={classes.Links} to="/" target="_blank">
+                <Link className={classes.Links} to="/facebook" target="_blank">
                 <img className={classes.Social} src={Facebook} alt='fb' />
                 </Link>
-                <Link className={classes.Links} to="/" target="_blank">
+                <Link className={classes.Links} to="/instagram" target="_blank">
                 <img className={classes.Social} src={Instagram} alt='insta' />
                 </Link>
             </div>

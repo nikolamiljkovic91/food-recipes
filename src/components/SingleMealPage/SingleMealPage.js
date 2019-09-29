@@ -21,6 +21,7 @@ class SingleMeal extends React.Component {
     }
     
     render () {
+        console.log(this.props.match)
         return (
             <div>
                 <Header />

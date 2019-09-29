@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import classes from './MealsList.module.css'
 
 const MealsList = (props) => {
@@ -10,7 +9,7 @@ const MealsList = (props) => {
         return (
         <div className={classes.Results} key={item.idMeal}>
             <div className={classes.ItemImg}>
-                <Link className={classes.Link} to='/'><img className={classes.Img} src={item.strMealThumb} alt='img'/></Link>
+                <img className={classes.Img} src={item.strMealThumb} alt='img'/>
             </div>
             <div className={classes.TextDiv}>
                 <p className={classes.TextOne}>{item.strMeal}</p>
@@ -22,7 +21,7 @@ const MealsList = (props) => {
     })
 
     if(props.list.loading){
-        return <p>Loading...</p>
+        return <p style={{textAlign: 'center'}}>Loading...</p>
     }else{
         return (
             <div>

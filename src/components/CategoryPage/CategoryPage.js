@@ -9,22 +9,49 @@ import * as actions from '../../store/actions/index';
 
 class CategoryPage extends React.Component {
 
-    // componentDidMount() {
-    //     this.props.onFetchCategory(this.props.match.params)
-    // }
+    state = {
+        searchInput: '',
+        headline: ''
+    }
+
+    componentDidMount() {
+        this.props.onFetchCategory(this.props.match.params.cat)
+        this.setState({ headline: this.props.match.params.cat})
+    }
+
+    onInputHandler = (event) => {
+        event.preventDefault()
+        let value = event.target.value
+        this.setState({searchInput: value})
+    }   
 
 
     render () {
-
-        // console.log(window.location)
         return (
             <div>
                 <Header />
-                    <RandomCategory />
-                    <CategoryMeals />
+                    <RandomCategory
+                    head={this.state.headline}
+                    filterR={this.state.searchInput}
+                    changeInput={this.onInputHandler}
+                    random={this.props.category}
+                    check={this.props.loading}/>
+                    <CategoryMeals
+                    loading={this.props.loading}
+                    filter={this.state.searchInput}
+                    list={this.props.category}/>
                 <Footer />
             </div>
         )
+    }
+}
+
+const mapStateToProps = state => {
+    console.log(state)
+    
+    return {
+        category: state.similar.similar,
+        loading: state.similar
     }
 }
 
@@ -34,4 +61,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CategoryPage)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage)
