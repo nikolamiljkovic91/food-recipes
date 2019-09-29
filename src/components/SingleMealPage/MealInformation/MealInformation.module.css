@@ -1,0 +1,150 @@
+.SingleItem {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.MealContent{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 40px;
+    width: 33%;
+}
+
+.HeadImg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.TextHed {
+    font-size: 22px;
+}
+
+.HeadTwo {
+    font-size: 16px;
+}
+
+.Info {
+    display: flex;
+}
+
+.UlList{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-right: 50px;
+}
+.UlListMes{
+    margin-left: 20px;
+}
+
+.ItemImg {
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.Img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.ContentTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-left: 70px;
+    margin-right: 40px;
+    width: 67%;
+}
+
+
+.Hash {
+    display: flex;
+    align-self: center;
+}
+
+.Par{
+    margin-bottom: 20px;
+}
+
+.Span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.ParH {
+    margin-right: 5px;
+    font-weight: bold;
+}
+.SpanH {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+@media(max-width: 1025px){
+    .TextHed {
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+    .ContentTwo {
+        margin-top: 7px;
+        margin-left: 30px;
+    }
+    .Par{
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 769px){
+    .MealContent{
+        width: 100%;
+    }
+    .ContentTwo{
+        width: 89%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .TextHed{
+        font-size: 16px;
+    }
+    .Par{
+        font-size: 12px;
+    }
+    .SingleItem{
+        flex-direction: column;
+        align-items: center;
+    }
+    .ItemImg{
+        width: 50%;
+    }
+    .HeadImg{
+        width: 100%;
+        align-items: center;
+    }
+    .Info{
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+    }
+    .MealContent{
+        margin-left: 0px;
+    }
+}
+
+@media(max-width: 426px){
+    .Par{
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .HeadTwo {
+        font-size: 12px;
+    }
+    .TextHed{
+        margin-bottom: 10px;
+    }
+}

@@ -21,10 +21,6 @@ class HomePage extends React.Component{
         categoryOpen: false
     }
 
-    // componentDidMount(){
-    //     this.props.onFetchCategories()
-    //     console.log(this.props.category)
-    // }
 
     onInputChange = (event) => {
         const { formData } = this.state;
@@ -60,6 +56,7 @@ class HomePage extends React.Component{
         
     }
 
+
     
     render() {
     
@@ -90,7 +87,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchCategories: () => dispatch(actions.fetchCategories())
+        onFetchCategories: () => dispatch(actions.fetchCategories()),
     }
 }
 

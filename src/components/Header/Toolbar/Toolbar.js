@@ -8,7 +8,6 @@ import Tooltip from '../Tooltip/Tooltip';
 
 const Toolbar = (props) => {
 
-        console.log(window.location.pathname)
 
         let path = window.location.pathname;
 
@@ -24,7 +23,7 @@ const Toolbar = (props) => {
                 </div>
                 <input onChange={props.onSearchHandler}
                  className={classes.Input}
-                 type='text' placeholder='Search...'
+                 type='text' placeholder='Search recipes...'
                  onKeyPress={props.enterHandler}/>
                 {/* <div className={classes.Divide}></div> */}
                 <ul className={classes.Ul}>

@@ -6,6 +6,8 @@ import TooltipSmall from '../Tooltip/TooltipSmall';
 
 const SideDrawer = (props) => {
 
+    let path = window.location.pathname;
+
 
         let showTooltip = null;
         if(props.tooltip){
@@ -16,13 +18,13 @@ const SideDrawer = (props) => {
             <div className={props.show ? classes.SideDrawerOpen : classes.SideDrawer}>
                 <ul className={classes.DrawerList}>
                 <div className={classes.ImgContainer}>
-                                    <img className={classes.Img} src={Avatar} alt='avatar' onClick={props.tooltipClick}/>
+                {path !== '/' ? <Link className={classes.DrawerLinkHome} to='/'>Home</Link> : <img className={classes.Img} src={Avatar} alt='avatar' onClick={props.tooltipClick}/>}
                                     <div className={classes.TooltipSmall}>
                                         {showTooltip}
                                     </div>
                                 </div>
-                    {props.authUser.isAuth && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
-                    <Link className={classes.DrawerLink}to='/'>About Us</Link>
+                    {(props.authUser.isAuth && path === '/') && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
+                    <Link className={path !== '/' ? classes.DrawerLinkOne : classes.DrawerLink}to='/'>About Us</Link>
                     <Link className={classes.DrawerLink}to='/'>Contact</Link>
                 </ul>
             </div>

@@ -1,0 +1,94 @@
+.ItemImg {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.Div{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.Img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.SimilarItem {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 70%;
+}
+
+
+.Wrap {
+    display: flex;
+    border-top: 1px solid black;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-top: 50px;
+    margin-top: 70px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.TextOne {
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.Span{
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+@media(max-width: 769px) {
+    .Wrap{
+        flex-direction: column;
+        align-items: center;
+    }
+    .SimilarItem{
+        align-items: center;
+        border-bottom: 1px solid black;
+        padding-top: 15px;
+    }
+    .Div{
+        width: 100%;
+    }
+    .Text{
+        font-size: 14px; 
+    }
+    .ItemImg{
+        width: 50%;
+    }
+}
+
+@media(max-width: 426px) {
+    .ItemImg {
+        width: 60%;
+    }
+    .Content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .SimilarItem{
+        width: 100%;
+    }
+    .TextOne {
+        margin-bottom: 15px;
+        font-size: 12px;
+    }
+    .Text {
+        margin: 5px 0px;
+        font-size: 12px;
+    }
+    .Wrap{
+        padding-top: 20px;
+        margin-top: 40px;
+    }
+}
