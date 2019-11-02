@@ -3,7 +3,7 @@
     justify-content: space-around;
     width: 100%;
     background-color: lightgray;
-    height: 150px;
+    height: 10vw;
     margin-top: 50px;
 }
 
@@ -22,7 +22,7 @@
 .LogoWrapper{
     display: flex;
     align-items: center;
-    width: 30%;
+    width: 20%;
 }
 .Logo{
     width: 80%;
@@ -61,7 +61,7 @@
     }
 }
 
-@media(max-width: 426px){
+@media(max-width: 575.98px){
         .Social{
             height: 18px;
         }
@@ -81,6 +81,6 @@
         }
         .Footer{
             flex-wrap: wrap;
-            height: 75px;
+            height: 23vw;
         }
 }

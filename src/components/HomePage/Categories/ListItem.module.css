@@ -1,5 +1,5 @@
 .Item {
-    width: 80%;
+    width: 60%;
     height: auto;
     overflow: hidden;
     border: 1px solid black;
@@ -22,13 +22,19 @@
     text-align: center;
 }
 
-@media(max-width: 769px) {
+@media(max-width: 1199.98px){
+    .Item{
+        width: 50%;
+    }
+}
+
+@media(max-width: 767.98px) {
     .Item {
         width: 70%;
     }
 }
 
-@media(max-width: 426px) {
+@media(max-width: 575.98px) {
     .Item {
         width: 60%;
     }

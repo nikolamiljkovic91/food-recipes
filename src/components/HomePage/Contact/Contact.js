@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './Contact.module.css';
 
 
-const Contact = (props) => {
+const Contact = React.forwardRef((props, ref) => {
 
     return (
         <form onSubmit={props.submit}>
-            <div className={classes.ContactForm}>
+            <div ref={ref} className={classes.ContactForm}>
             <h2 className={classes.ContactHeadline}>Contact</h2>
             <div className={classes.ContactInput}>
                 <input className={classes.SingleInput} type='text' name='firstName' placeholder='First name' onChange={props.input} value={props.formState.firstName} />
@@ -20,6 +20,7 @@ const Contact = (props) => {
             </div>
         </form>
     )
-}
+  }
+)
 
 export default Contact

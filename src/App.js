@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
  
 import HomePage from './components/HomePage/HomePage';
 import SearchPage from './components/SearchPage/SearchPage';
@@ -16,6 +15,7 @@ class App extends React.Component {
       <Switch>
         <Route path='/'exact component={HomePage} />
         <Route path='/search' component={SearchPage} />
+        <Route path='/my-meals' render={()=>localStorage.getItem('auth')==='loggedIn' && <MyMeals/>} />
         <Route path='/category/:cat' component={CategoryPage} />
         <Route path='/single-meal/:id' component={SingleMealPage} />
         <Route path="/instagram" component={()=>{
@@ -29,28 +29,6 @@ class App extends React.Component {
         <Redirect to='/' />
       </Switch>
     );
-  
-    if(this.props.authenticated.authRoute){
-      routes = (
-        <Switch>
-        <Route path='/'exact component={HomePage} />
-        <Route path='/search/' component={SearchPage} />
-        <Route path='/my-meals' component={MyMeals} />
-        <Route path='/single-meal/:id' component={SingleMealPage} />
-        <Route path='/category/:cat' component={CategoryPage} />
-        <Route path="/instagram" component={()=>{
-                    window.location.href = "https://www.instagram.com";
-                    return null
-                }} />
-        <Route path="/facebook" component={()=>{
-                    window.location.href = "https://www.facebook.com";
-                    return null
-                }} />      
-        <Redirect to='/' />
-      </Switch>
-      )
-
-    } 
     
     return (
       <div>
@@ -60,10 +38,5 @@ class App extends React.Component {
   }
   }
 
-const mapStateToProps = (state) => {
-  return {
-    authenticated: state.authRoute
-  }
-}
 
-export default connect(mapStateToProps)(App);
+export default App;

@@ -4,6 +4,4 @@ export {
     fetchRandom,
     fetchMealById,
     fetchSimilar,
-    checkAuth,
-    checkLogout,
 }from './recipes';

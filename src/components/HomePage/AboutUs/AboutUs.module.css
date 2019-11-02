@@ -5,69 +5,75 @@
 
 .AboutImg {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .DivWrap {
-    margin-bottom: 50px;
-    margin-top: 70px;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .ImgAbout {
-    width: 70%;
-    height: auto;
+    width: 80%;
     border-radius: 15px;
 }
 
 .AboutText {
-    margin-left: 40px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+    align-items: center;
 }
 
 .Headline{
-    margin-left: 40px;
-    font-size: 24px;
-    text-decoration: underline;
+    font-size: 2vw;
 }
-
 .Text {
     width: 70%;
+    font-size: 1.2vw;
 }
 
-@media(max-width: 769px){
-    .Text{
-        font-size: 14px;
-        width: 80%;
+@media(max-width: 767.98px){
+    .DivWrap{
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
     }
-    .DivWrap {
-        margin-bottom: 30px;
-        margin-top: 30px;
+    .AboutText{
+        justify-content: center;
+        padding-bottom: 5%;
+    }
+    .Text{
+        font-size: 18px;
+    }
+    .Headline{
+        font-size: 24px;
     }
     .ImgAbout {
         width: 85%;
     }
-}
-
-@media(max-width: 426px){
-    .AboutUs {
+    .AboutImg{
+        justify-content: center;
+    }
+    .AboutUs{
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
     }
-    .AboutText {
-        display: flex;
-        align-items: center;
-        margin-left: 0px;
-        margin-bottom: 15px;
-    }
-    .Headline {
-        text-align: center;
-        margin-left: 0px;
-    }
+}
+
+@media(max-width: 575.98px){
     .Text {
-        font-size: 12px;
+        font-size: 14px;
         width: 80%;
+    }
+    .Headline{
+        font-size: 22px;
     }
 }

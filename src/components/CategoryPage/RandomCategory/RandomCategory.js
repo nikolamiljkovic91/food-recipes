@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import classes from './RandomCategory.module.css'
  
 const RandomCategory = (props) => {
-    console.log(props.check.loading)
     let array = props.random || [];
 
 
@@ -44,5 +43,6 @@ const RandomCategory = (props) => {
         )
     }
 }
+
 
 export default withRouter(RandomCategory);

@@ -4,7 +4,6 @@ import classes from './RandomMeal.module.css';
 
 const RandomMeal = (props) => {
     let meal = props.random.randomMeal
-    console.log(meal)
 
     let renderMeal = meal.map(item => {
         return (

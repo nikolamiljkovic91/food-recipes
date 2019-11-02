@@ -6,7 +6,6 @@ const SearchResults = (props) => {
 
 
     let array = props.searchResults.meals || [];
-    console.log(array)
 
     let filterArr = array.filter(meal => {
         return meal.strCategory.toLowerCase().indexOf(props.input.toLowerCase()) !== -1
