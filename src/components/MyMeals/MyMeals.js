@@ -14,7 +14,6 @@ class MyMeals extends React.Component {
 
 
     render() {
-        console.log(this.props.data)
         return(
             <div>
                 <Header />
@@ -26,7 +25,6 @@ class MyMeals extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         data: state.meals.meals
     }

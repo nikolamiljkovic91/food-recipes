@@ -18,7 +18,6 @@ class SearchPage extends React.Component {
     componentDidMount = () => {
         this.props.onFetchCategories()
         this.props.onFetchRandom()
-        console.log(this.props.match)
         }
         
         filterHandler = (event) => {
@@ -27,7 +26,6 @@ class SearchPage extends React.Component {
                         
             
         render() {
-                console.log(this.props.fetchRandom.randomMeal)
     
         return (
             <div>

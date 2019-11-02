@@ -35,12 +35,13 @@ const Toolbar = (props) => {
                                 </div>
                             </div>
                         {(props.authUser.isAuth && path === '/') && <Link className={classes.Link} to="/my-meals">My Meals</Link>}
-                        <Link className={classes.Link} to="/">About Us</Link>
-                        <Link className={classes.Link} to="/">Contact</Link>
+                        <Link onClick={props.about} className={classes.Link} to="/">About Us</Link>
+                        <Link onClick={props.contact} className={classes.Link} to="/">Contact</Link>
                     </li>
                 </ul>
             </div>
         )
     }
+
 
 export default Toolbar;

@@ -10,7 +10,6 @@ class SingleMeal extends React.Component {
     
     componentDidMount () {
         this.props.onFetchMeal(this.props.match.params.id)
-        console.log(this.props.match.params)
     }
 
     componentDidUpdate() {
@@ -21,7 +20,6 @@ class SingleMeal extends React.Component {
     }
     
     render () {
-        console.log(this.props.match)
         return (
             <div>
                 <Header />

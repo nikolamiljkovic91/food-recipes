@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './MealInformation.module.css';
 
 const MealInfo = (props) => {
-    console.log(props.info.loading)
 
     let array = props.info.meal[0] || [];
 
@@ -13,7 +12,6 @@ const MealInfo = (props) => {
             ingredients.push(array[key]) 
         }
     };
-    console.log(ingredients)
 
     let measure = [];
 

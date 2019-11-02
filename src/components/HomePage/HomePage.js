@@ -21,6 +21,16 @@ class HomePage extends React.Component{
         categoryOpen: false
     }
 
+    aboutRef = React.createRef();
+    contactRef = React.createRef();
+
+    scrollToAbout = () => {
+        window.scrollTo(0, this.aboutRef.current.offsetTop)
+    }
+
+    scrollToContact = () => {
+        window.scrollTo(0, this.contactRef.current.offsetTop)
+    }
 
     onInputChange = (event) => {
         const { formData } = this.state;
@@ -62,17 +72,25 @@ class HomePage extends React.Component{
     
         return (
             <div>
-                <Header />
+                <Header 
+                scrollAbout={this.scrollToAbout}
+                scrollContact={this.scrollToContact}
+                scrollTop={this.top}
+                />
                 <PageHeader 
                 toggle={this.onClickHandler}/>
                 <List 
                 openCategory={this.state.categoryOpen}
                 categoryState={this.props.category}/>
-                <AboutUs />
+                <AboutUs 
+                ref={this.aboutRef}
+                />
                 <Contact 
                 input={this.onInputChange}
                 formState={this.state.formData}
-                submit={this.onSubmitHandler}/>
+                submit={this.onSubmitHandler}
+                ref={this.contactRef}
+                />
                 <Footer />
             </div>
         )

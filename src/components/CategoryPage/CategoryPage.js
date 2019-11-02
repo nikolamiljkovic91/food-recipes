@@ -47,7 +47,6 @@ class CategoryPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     
     return {
         category: state.similar.similar,

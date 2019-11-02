@@ -4,7 +4,6 @@ import searchReducer from './searchReducer';
 import randomReducer from './randomReducer'
 import mealReducer from './mealReducer';
 import categoryReducer from './categoryReducer';
-import routeReducer from './routeReducer';
 
 
 export default combineReducers({
@@ -12,6 +11,5 @@ export default combineReducers({
     meals: searchReducer,
     random: randomReducer,
     meal: mealReducer,
-    similar: categoryReducer,
-    authRoute: routeReducer
+    similar: categoryReducer
 })
