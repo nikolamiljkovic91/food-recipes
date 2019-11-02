@@ -182,15 +182,5 @@ export const fetchSimilar = (category) => {
     }
 }       
 
-export const checkAuth = () => {
-    return {
-        type: actionTypes.CHECK_AUTH,
-    }
-}
 
-export const checkLogout = () => {
-    return {
-        type: actionTypes.CHECK_LOGOUT
-    }
-}
 

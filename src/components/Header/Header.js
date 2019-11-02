@@ -20,6 +20,13 @@ class Header extends React.Component {
         error: false
     }
 
+    componentDidMount(){
+        if(localStorage.getItem('auth') === 'loggedIn'){
+            this.setState({isAuth: true})
+        }else{
+            this.setState({isAuth: false})
+        }
+    }
 
 
     hamburgerButtonHandler = () => {
@@ -61,13 +68,13 @@ class Header extends React.Component {
                 return this.setState({isAuth: false, error: true})
             }
         }       
-        this.props.onCheckAuth()
+        localStorage.setItem('auth', 'loggedIn')
         return this.setState({isAuth: true, tooltipOpen: false});
     }
     
     logoutHandler = () => {
         this.setState({isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''}})
-        this.props.onCheckLogout();
+        localStorage.setItem('auth', 'loggedOut')
     }
     
     onSearchHandler = (event) => {  
@@ -85,11 +92,12 @@ class Header extends React.Component {
     
     
     render() {
-           
+
+        
         
         
         return (
-            <div style={{height: '100%'}}>
+            <div>
                 <Toolbar
                 enterHandler={this.onEnterHandler}
                 onSearchHandler={this.onSearchHandler}
@@ -99,14 +107,20 @@ class Header extends React.Component {
                 tooltipClick={this.tooltipOpenHandler}
                 onInputChange={this.onInputHandler}
                 authForm={this.onAuthHandler}
-                logoutButton={this.logoutHandler}/>
+                logoutButton={this.logoutHandler}
+                about={this.props.scrollAbout}
+                contact={this.props.scrollContact}
+                />
                 <SideDrawer show={this.state.sideDrawerOpen}
                 tooltip={this.state.tooltipOpen}
                 tooltipClick={this.tooltipOpenHandler}
                 onInputChange={this.onInputHandler}
                 authForm={this.onAuthHandler}
                 logoutButton={this.logoutHandler}
-                authUser={this.state}/>
+                authUser={this.state}
+                about={this.props.scrollAbout}
+                contact={this.props.scrollContact}
+                />
                 {this.state.sideDrawerOpen && <Backdrop backdropHandler={this.backdropClickHandler}/>}
                 <div style={{marginTop: '100px'}}>
                     
@@ -119,15 +133,12 @@ class Header extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.meals,
-        authenticated: state.authRoute
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchMeals: (text) => dispatch(actions.fetchMeals(text)),
-        onCheckAuth: () => dispatch(actions.checkAuth()),
-        onCheckLogout: () => dispatch(actions.checkLogout())
+        onFetchMeals: (text) => dispatch(actions.fetchMeals(text))
     }
 }
 

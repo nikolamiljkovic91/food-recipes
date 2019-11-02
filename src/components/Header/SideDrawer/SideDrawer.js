@@ -24,8 +24,8 @@ const SideDrawer = (props) => {
                                     </div>
                                 </div>
                     {(props.authUser.isAuth && path === '/') && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
-                    <Link className={path !== '/' ? classes.DrawerLinkOne : classes.DrawerLink}to='/'>About Us</Link>
-                    <Link className={classes.DrawerLink}to='/'>Contact</Link>
+                    <Link onClick={props.about} className={path !== '/' ? classes.DrawerLinkOne : classes.DrawerLink}to='/'>About Us</Link>
+                    <Link onClick={props.contact} className={classes.DrawerLink}to='/'>Contact</Link>
                 </ul>
             </div>
         )

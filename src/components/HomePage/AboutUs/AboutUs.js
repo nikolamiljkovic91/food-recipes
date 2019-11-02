@@ -2,10 +2,10 @@ import React from 'react';
 import classes from './AboutUs.module.css';
 import About from '../..//../assets/Images/ABOUT.jpg'
 
-const AboutUs = () => {
+const AboutUs = React.forwardRef((props, ref) => {
     
     return (
-        <div className={classes.DivWrap}>
+        <div ref={ref} className={classes.DivWrap}>
             <h2 className={classes.Headline}>About Us</h2>
             <div className={classes.AboutUs}>
             <div className={classes.AboutText}>
@@ -17,6 +17,7 @@ const AboutUs = () => {
         </div>
         </div>
     )
-}
+    }
+)
 
 export default AboutUs;
