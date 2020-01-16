@@ -1,20 +1,22 @@
 import React from 'react';
 import classes from './Tooltip.module.css';
-
+import { connect } from 'react-redux'
+ 
 
 const Tooltip = (props) => {
-
+    console.log(props.authData.loading)
+    
     let errorMessage = (
         <p className={classes.Error}>Invalid Input!</p>
     )
     
     let tooltip = (
         <div className={classes.Tooltip}>
-            <button onClick={props.logoutClick} className={classes.LogoutButton}>LOGOUT</button>
+            {!props.authData.loading ? <button onClick={props.logoutClick} className={classes.LogoutButton}>LOGOUT</button> : <p>Loading...</p>}
         </div> 
     )
 
-    if(props.userAuth.isAuth){
+    if(props.auth.uid){
         return tooltip
     }else{
         tooltip = (
@@ -23,7 +25,7 @@ const Tooltip = (props) => {
                 <input className={classes.Input} type='email' name='email' placeholder='Email' onChange={props.input} value={props.userAuth.user.email}/>
                 <input className={classes.Input} type='password' name='password' placeholder='Password' onChange={props.input} value={props.userAuth.user.password}/>
                 <button type='submit' className={classes.Button} onClick={props.formSubmit}>Login</button>
-                {props.userAuth.error && errorMessage}
+                {props.authData.error && errorMessage}
             </div>
         </form>
         )
@@ -32,4 +34,13 @@ const Tooltip = (props) => {
     return tooltip
 }
 
-export default Tooltip;
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        auth: state.firebase.auth,
+        authData: state.auth
+    }
+}
+
+
+export default connect(mapStateToProps)(Tooltip);

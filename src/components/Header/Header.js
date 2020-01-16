@@ -16,17 +16,9 @@ class Header extends React.Component {
         searchText: '',
         sideDrawerOpen: false,
         tooltipOpen: false,
-        isAuth: false,
         error: false
     }
 
-    componentDidMount(){
-        if(localStorage.getItem('auth') === 'loggedIn'){
-            this.setState({isAuth: true})
-        }else{
-            this.setState({isAuth: false})
-        }
-    }
 
 
     hamburgerButtonHandler = () => {
@@ -57,24 +49,37 @@ class Header extends React.Component {
         })
     }
 
-    onAuthHandler = (event) => {
-        event.preventDefault();
-        const existingUser = { email: 'test@test.com', password: 'test123'}
-        const newUser = this.state.user;
-        const existingUserKeys = Object.keys(existingUser);
+    //FIREBASE AUTHENTICATION
 
-        for (let key of existingUserKeys) {
-            if(existingUser[key] !== newUser[key]){
-                return this.setState({isAuth: false, error: true})
-            }
-        }       
-        localStorage.setItem('auth', 'loggedIn')
-        return this.setState({isAuth: true, tooltipOpen: false});
+        onAuthHandler = (event) => {
+        event.preventDefault();
+        this.props.onSignIn(this.state.user)
+        
+        // localStorage.setItem('auth', 'authenticated')
+        
     }
     
+
+
+    // onAuthHandler = (event) => {
+    //     event.preventDefault();
+    //     const existingUser = { email: 'test@test.com', password: 'test123'}
+    //     const newUser = this.state.user;
+    //     const existingUserKeys = Object.keys(existingUser);
+
+    //     for (let key of existingUserKeys) {
+    //         if(existingUser[key] !== newUser[key]){
+    //             return this.setState({isAuth: false, error: true})
+    //         }
+    //     }       
+    //     localStorage.setItem('auth', 'loggedIn')
+    //     return this.setState({isAuth: true, tooltipOpen: false});
+    // }
+    
     logoutHandler = () => {
-        this.setState({isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''}})
-        localStorage.setItem('auth', 'loggedOut')
+        this.props.onSignOut()
+        this.setState({ isAuth: false, tooltipOpen: false, user:{email: '', password: ''} })
+        localStorage.clear('auth')
     }
     
     onSearchHandler = (event) => {  
@@ -92,7 +97,6 @@ class Header extends React.Component {
     
     
     render() {
-
         
         
         
@@ -131,14 +135,18 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         data: state.meals,
+        auth: state.firebase.auth
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchMeals: (text) => dispatch(actions.fetchMeals(text))
+        onFetchMeals: (text) => dispatch(actions.fetchMeals(text)),
+        onSignIn: (credentials) => dispatch(actions.signIn(credentials)),
+        onSignOut: () => dispatch(actions.signOut())
     }
 }
 

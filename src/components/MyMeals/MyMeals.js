@@ -17,18 +17,18 @@ class MyMeals extends React.Component {
         return(
             <div>
                 <Header />
-                <MealsList list={this.props.data}/>
+                <MealsList />
                 <Footer />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data: state.meals.meals
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         data: state.meals.meals
+//     }
+// }
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
  
-export default connect(mapStateToProps, mapDispatchToProps)(MyMeals);
+export default connect(null, mapDispatchToProps)(MyMeals);

@@ -14,7 +14,7 @@ const Footer = () => {
                 <img className={classes.Logo} src={Logo} alt='logo'/>
             </div>
             <div className={classes.Copyright}>
-                <p className={classes.Text}>Copyright - Golux Technologies 2019 - Nikola Miljkovic</p>
+                <p className={classes.Text}>Copyright - Nikola Miljkovic</p>
             </div>
             <div className={classes.SocialNetworks}>
                 <Link className={classes.Links} to="/facebook" target="_blank">

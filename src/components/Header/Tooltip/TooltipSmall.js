@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import classes from './TooltipSmall.module.css';
 
 const TooltipSmall = (props) => {
@@ -13,13 +14,13 @@ const TooltipSmall = (props) => {
         </div> 
     )
 
-    if(props.userAuth.isAuth){
+    if(props.auth.uid){
         return tooltipSm
     }else{
         tooltipSm = (
             <form onSubmit={props.formSubmit}>
-                {props.userAuth.error && errorMessageSm}
             <div className={classes.TooltipSm}>
+                {props.authData.error && errorMessageSm}
                 <input className={classes.InputSm}type='email' name='email' placeholder='Email' onChange={props.input} value={props.userAuth.email}/>
                 <input className={classes.InputSm}type='password' name='password' placeholder='Password' onChange={props.input} value={props.userAuth.password}/>
                 <button type='submit' className={classes.ButtonSm}>Login</button>
@@ -30,4 +31,13 @@ const TooltipSmall = (props) => {
     return tooltipSm
 }
 
-export default TooltipSmall;
+
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        auth: state.firebase.auth,
+        authData: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(TooltipSmall);
