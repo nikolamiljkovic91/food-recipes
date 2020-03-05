@@ -9,12 +9,11 @@ import Tooltip from '../Tooltip/Tooltip';
 
 const Toolbar = (props) => {
 
-
         let path = window.location.pathname;
 
         let showTooltip = null;
         if(props.tooltip){
-            showTooltip = <Tooltip input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
+            showTooltip = <Tooltip signUp={props.onSignUp} input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton} signUpHandler={props.signUp}/>
         }
     
         return (
@@ -49,5 +48,6 @@ const mapStateToProps = (state) => {
         auth: state.firebase.auth
     }
 }
+
 
 export default connect(mapStateToProps)(Toolbar);

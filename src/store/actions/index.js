@@ -8,5 +8,6 @@ export {
 
 export {
     signIn,
-    signOut
+    signOut,
+    signUp
 }from './auth'

@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = 
     {
-        error: false,
+        signInError: null,
+        signUpError: null,
         loading: false
     }
 
@@ -16,19 +17,35 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.SIGN_IN_FAIL:
         return { 
             ...state,
-            error: true,
+            signInError: action.error.message,
             loading: false
         }
         case actionTypes.SIGN_IN_SUCCESS:
             return {
             ...state,
-            error: false,
+            signInError: null,
             loading: false
         }
         case actionTypes.SIGN_OUT_SUCCESS:
-            console.log('signout successful')
             return{
                 ...state,
+            }
+        case actionTypes.SIGN_UP_START:
+            return{
+                ...state,
+                loading: true
+            }
+        case actionTypes.SIGN_UP_FAIL:
+            return{
+                ...state,
+                loading: false,
+                signUpError: action.error.message
+            }
+        case actionTypes.SIGN_UP_SUCCESS:
+            return{
+                ...state,
+                loading: false,
+                signUpError: null
             }
 
         default:

@@ -11,7 +11,7 @@ const SideDrawer = (props) => {
 
         let showTooltip = null;
         if(props.tooltip){
-            showTooltip = <TooltipSmall input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
+            showTooltip = <TooltipSmall signUp={props.onSignUp} signUpHandler={props.signUp} input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
         }
 
         return (

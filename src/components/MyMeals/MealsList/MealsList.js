@@ -4,7 +4,7 @@ import classes from './MealsList.module.css'
 
 const MealsList = (props) => {
 
-    let array = props.data || [];
+    let array = props.data.meals || [];
 
     let render = array.map(item => {
         return (
@@ -20,7 +20,6 @@ const MealsList = (props) => {
         </div>
         )
     })
-
     if(props.data.loading){
         return <p style={{textAlign: 'center'}}>Loading...</p>
     }else{
@@ -38,7 +37,7 @@ const MealsList = (props) => {
 
 const mapStateToProps = state => {
     return {
-        data: state.meals.meals
+        data: state.meals
     }
 }
 

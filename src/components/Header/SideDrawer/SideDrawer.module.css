@@ -80,10 +80,12 @@
     position: relative;
 }
 
+
 .TooltipSmall{
     position: absolute;
     transform: translateX(-21%);
-    top: -160px;
+    top: -220px;
+    left: 90px;
     height: 150px;
 }
 

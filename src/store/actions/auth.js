@@ -50,3 +50,46 @@ export const signOut = () => {
         })
     }
 }
+
+export const signUpStart = () => {
+    return {
+        type: actionTypes.SIGN_UP_START
+
+    }
+}
+
+export const signUpFail = (error) => {
+    return {
+        type: actionTypes.SIGN_UP_FAIL,
+        error: error
+    }
+}
+
+export const signUpSuccess = () => {
+    return {
+        type: actionTypes.SIGN_UP_SUCCESS
+    }
+}
+
+export const signUp = (newUser) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+        dispatch(signUpStart())
+        firebase.auth().createUserWithEmailAndPassword(
+            newUser.email,
+            newUser.password
+        ).then(resp => {
+                firestore.collection('users').doc(resp.user.uid).set({
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                initials: newUser.firstName[0] + newUser.lastName[0]
+            })
+        }).then(() => {
+            dispatch(signUpSuccess())
+            localStorage.setItem('auth', 'authenticated')
+        }).catch((error) => {
+            dispatch(signUpFail(error))       
+        })
+    }
+}

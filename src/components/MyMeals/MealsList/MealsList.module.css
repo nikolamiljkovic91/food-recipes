@@ -9,7 +9,9 @@
 .Wrap{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
 }
 .H{
     margin-bottom: 30px;
@@ -17,7 +19,7 @@
 }
 
 .ItemImg {
-    width: 60%;
+    width: 100%;
     height: auto;
     overflow: hidden;
     border: 1px solid black;
@@ -50,14 +52,16 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 60%;
+    width: 100%;
 }
 
-.ListWrapper {
+/* .ListWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-}
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+} */
 
 @media(max-width: 769px) {
     .Text{
@@ -73,6 +77,9 @@
     .Results {
         width: 70%;
         margin-bottom: 20px;
+    }
+    .Wrap{
+        justify-content: center;
     }
     .ItemImg {
         width: 100%;

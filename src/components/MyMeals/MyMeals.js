@@ -24,11 +24,6 @@ class MyMeals extends React.Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         data: state.meals.meals
-//     }
-// }
 
 const mapDispatchToProps = dispatch => {
     return {
