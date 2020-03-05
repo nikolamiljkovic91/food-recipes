@@ -11,11 +11,11 @@
 .HeaderImage {
     display: flex;
     justify-content: center;
+    width: 50%;
 }
 
 .ImgHead {
-    width: 70%;
-    height: auto;
+    width: 100%;
 }
 
 .HeaderText {
@@ -56,8 +56,9 @@
         justify-content: center;
         align-items: center;
     }
-    .ImgHead {
-        width: 100%;
+
+    .HeaderImage {
+        width: 80%;
     }
     .Text {
         width: 100%;
@@ -86,8 +87,8 @@
         display: flex;
         flex-direction: column;
     }
-    .ImgHead {
-        width: 85%;
+    .HeaderImage {
+        width: 90%;
     }
     .Text {
         width: 70%;

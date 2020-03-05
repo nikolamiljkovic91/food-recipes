@@ -35,7 +35,7 @@ class Header extends React.Component {
     }
 
     backdropClickHandler = () => {
-        this.setState({sideDrawerOpen: false})
+        this.setState({sideDrawerOpen: false, tooltipOpen: false})
     }
 
     tooltipOpenHandler = () => {
