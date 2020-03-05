@@ -5,3 +5,9 @@ export {
     fetchMealById,
     fetchSimilar,
 }from './recipes';
+
+export {
+    signIn,
+    signOut,
+    signUp
+}from './auth'

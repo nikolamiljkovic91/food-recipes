@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '../../../assets/icons/avatar.png'
+import { connect } from 'react-redux';
 
 import classes from './Toolbar.module.css'
 import HamburgerButton from '../SideDrawer/HamburgerButton';
@@ -8,12 +9,11 @@ import Tooltip from '../Tooltip/Tooltip';
 
 const Toolbar = (props) => {
 
-
         let path = window.location.pathname;
 
         let showTooltip = null;
         if(props.tooltip){
-            showTooltip = <Tooltip input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
+            showTooltip = <Tooltip signUp={props.onSignUp} input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton} signUpHandler={props.signUp}/>
         }
     
         return (
@@ -34,7 +34,7 @@ const Toolbar = (props) => {
                                     {showTooltip}
                                 </div>
                             </div>
-                        {(props.authUser.isAuth && path === '/') && <Link className={classes.Link} to="/my-meals">My Meals</Link>}
+                        {(localStorage.getItem('auth') === 'authenticated' && path === '/') && <Link className={classes.Link} to="/my-meals">My Meals</Link>}
                         <Link onClick={props.about} className={classes.Link} to="/">About Us</Link>
                         <Link onClick={props.contact} className={classes.Link} to="/">Contact</Link>
                     </li>
@@ -43,5 +43,11 @@ const Toolbar = (props) => {
         )
     }
 
+const mapStateToProps = (state) => {
+    return{
+        auth: state.firebase.auth
+    }
+}
 
-export default Toolbar;
+
+export default connect(mapStateToProps)(Toolbar);

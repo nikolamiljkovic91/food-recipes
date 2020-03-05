@@ -13,20 +13,19 @@ class Header extends React.Component {
             email: '',
             password: ''
         },
+        signUp: {
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: ''
+        },
         searchText: '',
         sideDrawerOpen: false,
         tooltipOpen: false,
-        isAuth: false,
-        error: false
+        error: false,
+
     }
 
-    componentDidMount(){
-        if(localStorage.getItem('auth') === 'loggedIn'){
-            this.setState({isAuth: true})
-        }else{
-            this.setState({isAuth: false})
-        }
-    }
 
 
     hamburgerButtonHandler = () => {
@@ -41,7 +40,10 @@ class Header extends React.Component {
 
     tooltipOpenHandler = () => {
         this.setState(preState => ({
-            tooltipOpen: !preState.tooltipOpen
+            tooltipOpen: !preState.tooltipOpen,
+            user:{email: '', password: ''},
+            signUp: {email: '', password: '', firstName: '', lastName: ''},
+            error: false
         }))
     }
 
@@ -57,24 +59,55 @@ class Header extends React.Component {
         })
     }
 
-    onAuthHandler = (event) => {
-        event.preventDefault();
-        const existingUser = { email: 'test@test.com', password: 'test123'}
-        const newUser = this.state.user;
-        const existingUserKeys = Object.keys(existingUser);
-
-        for (let key of existingUserKeys) {
-            if(existingUser[key] !== newUser[key]){
-                return this.setState({isAuth: false, error: true})
+    singUpInputHandler = (event) => {
+        const { signUp } = this.state
+        const name = event.target.name
+        const value = event.target.value
+        this.setState({
+            signUp: {
+                ...signUp,
+                [name] : value
             }
-        }       
-        localStorage.setItem('auth', 'loggedIn')
-        return this.setState({isAuth: true, tooltipOpen: false});
+        })
     }
+
+    //FIREBASE AUTHENTICATION
+
+        onAuthHandler = (event) => {
+        event.preventDefault();
+        this.props.onSignIn(this.state.user)
+        this.setState({ error: true })
+        // localStorage.setItem('auth', 'authenticated')
+        
+    }
+
+        onSignUpHandler = (event) => {
+            event.preventDefault()
+            this.props.onSignUp(this.state.signUp)
+            this.setState({ error: true })
+        }
+    
+
+
+    // onuthHandler = (event) => {
+    //     event.preventDefault();
+    //     const existingUser = { email: 'test@test.com', password: 'test123'}
+    //     const newUser = this.state.user;
+    //     const existingUserKeys = Object.keys(existingUser);
+
+    //     for (let key of existingUserKeys) {
+    //         if(existingUser[key] !== newUser[key]){
+    //             return this.setState({isAuth: false, error: true})
+    //         }
+    //     }       
+    //     localStorage.setItem('auth', 'loggedIn')
+    //     return this.setState({isAuth: true, tooltipOpen: false});
+    // }
     
     logoutHandler = () => {
-        this.setState({isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''}})
-        localStorage.setItem('auth', 'loggedOut')
+        this.props.onSignOut()
+        this.setState({ isAuth: false, tooltipOpen: false, error: false, user:{email: '', password: ''} })
+        localStorage.clear('auth')
     }
     
     onSearchHandler = (event) => {  
@@ -92,7 +125,6 @@ class Header extends React.Component {
     
     
     render() {
-
         
         
         
@@ -110,6 +142,8 @@ class Header extends React.Component {
                 logoutButton={this.logoutHandler}
                 about={this.props.scrollAbout}
                 contact={this.props.scrollContact}
+                signUp={this.singUpInputHandler}
+                onSignUp={this.onSignUpHandler}
                 />
                 <SideDrawer show={this.state.sideDrawerOpen}
                 tooltip={this.state.tooltipOpen}
@@ -120,6 +154,8 @@ class Header extends React.Component {
                 authUser={this.state}
                 about={this.props.scrollAbout}
                 contact={this.props.scrollContact}
+                signUp={this.singUpInputHandler}
+                onSignUp={this.onSignUpHandler}
                 />
                 {this.state.sideDrawerOpen && <Backdrop backdropHandler={this.backdropClickHandler}/>}
                 <div style={{marginTop: '100px'}}>
@@ -133,12 +169,16 @@ class Header extends React.Component {
 const mapStateToProps = (state) => {
     return {
         data: state.meals,
+        auth: state.firebase.auth
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchMeals: (text) => dispatch(actions.fetchMeals(text))
+        onFetchMeals: (text) => dispatch(actions.fetchMeals(text)),
+        onSignIn: (credentials) => dispatch(actions.signIn(credentials)),
+        onSignOut: () => dispatch(actions.signOut()),
+        onSignUp: (newUser) => dispatch(actions.signUp(newUser))
     }
 }
 

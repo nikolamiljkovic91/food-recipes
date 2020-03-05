@@ -9,12 +9,18 @@ import thunk from 'redux-thunk';
 import reducers from './store/reducers/';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './scrollToTop/scrollToTop';
+import { reduxFirestore, getFirestore } from 'redux-firestore';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
+import fbConfig from './config/fbConfig'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 localStorage.getItem('auth')
 
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig)
+));
 
 
 

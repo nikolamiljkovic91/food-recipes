@@ -11,7 +11,7 @@ const SideDrawer = (props) => {
 
         let showTooltip = null;
         if(props.tooltip){
-            showTooltip = <TooltipSmall input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
+            showTooltip = <TooltipSmall signUp={props.onSignUp} signUpHandler={props.signUp} input={props.onInputChange} userAuth={props.authUser} formSubmit={props.authForm} logoutClick={props.logoutButton}/>
         }
 
         return (
@@ -23,13 +23,15 @@ const SideDrawer = (props) => {
                                         {showTooltip}
                                     </div>
                                 </div>
-                    {(props.authUser.isAuth && path === '/') && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
+                    {(localStorage.getItem('auth') === 'authenticated' && path === '/') && <Link className={classes.DrawerLink} to="/my-meals">My Meals</Link>}            
                     <Link onClick={props.about} className={path !== '/' ? classes.DrawerLinkOne : classes.DrawerLink}to='/'>About Us</Link>
                     <Link onClick={props.contact} className={classes.DrawerLink}to='/'>Contact</Link>
                 </ul>
             </div>
         )
     }
+
+
 
 
 export default SideDrawer;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
  
 import HomePage from './components/HomePage/HomePage';
 import SearchPage from './components/SearchPage/SearchPage';
@@ -15,7 +16,7 @@ class App extends React.Component {
       <Switch>
         <Route path='/'exact component={HomePage} />
         <Route path='/search' component={SearchPage} />
-        <Route path='/my-meals' render={()=>localStorage.getItem('auth')==='loggedIn' && <MyMeals/>} />
+        <Route path='/my-meals' render={()=>(localStorage.getItem('auth') === 'authenticated') && <MyMeals/>} />
         <Route path='/category/:cat' component={CategoryPage} />
         <Route path='/single-meal/:id' component={SingleMealPage} />
         <Route path="/instagram" component={()=>{
@@ -38,5 +39,11 @@ class App extends React.Component {
   }
   }
 
+  const mapStateToProps = (state) => {
+    return {
+      auth: state.firebase.auth
+    }
+  }
 
-export default App;
+
+export default connect(mapStateToProps)(App);

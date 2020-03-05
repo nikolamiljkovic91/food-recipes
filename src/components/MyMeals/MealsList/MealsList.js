@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classes from './MealsList.module.css'
 
 const MealsList = (props) => {
 
-    let array = props.list || [];
+    let array = props.data.meals || [];
 
     let render = array.map(item => {
         return (
@@ -19,8 +20,7 @@ const MealsList = (props) => {
         </div>
         )
     })
-
-    if(props.list.loading){
+    if(props.data.loading){
         return <p style={{textAlign: 'center'}}>Loading...</p>
     }else{
         return (
@@ -35,4 +35,10 @@ const MealsList = (props) => {
 
 }
 
-export default MealsList;
+const mapStateToProps = state => {
+    return {
+        data: state.meals
+    }
+}
+
+export default connect(mapStateToProps)(MealsList);
